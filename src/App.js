@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Form from './component/Form'
 
-function App() {
+function App(props) {
+  const [count, setCount] = useState(0)
+  
+
+
+  const handleAdd = () => {
+    setCount(() => {
+      return (
+        count + 1
+      )
+    })
+  }
+  const handleRemove = () => {
+    setCount(() => {
+      return (
+        count - 1
+      )
+    })
+  }
+  const handleReset = () => {
+    setCount(() => {
+      return (
+        0
+      )
+    })
+  }
+  // useEffect(() => {
+  //   return () => {
+  //     console.log('i render once')
+  //   }
+  // })
+
+  const title = 'form basic concept'
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>Hi my name is { props.name }</h3>
+      <h2>count is { count }</h2>
+      <button onClick={handleAdd}>add</button>
+      <button onClick={handleRemove}>remove</button>
+      <button onClick={ handleReset }>reset</button>
+      
+      <Form  title={title}/>
+
     </div>
   );
 }
